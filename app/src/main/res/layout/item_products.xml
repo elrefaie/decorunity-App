@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="3dp"
+        app:cardCornerRadius="3dp"
+
+        >
+    <TextView
+        android:id="@+id/product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+
+        android:text="Product_name"
+       android:textSize="22dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="3dp"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        android:orientation="horizontal"
+       >
+
+        <ImageView
+            android:id="@+id/product_img"
+            android:layout_width="160dp"
+            android:layout_height="180dp"
+            android:src="@drawable/design1"
+          android:layout_marginTop="30dp"
+
+
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:id="@+id/product_brand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Brand : IKEA"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"/>
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingTop="15dp"
+                android:text="100LE"
+                android:textStyle="bold"
+
+                android:textSize="22dp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/product_fav"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/favorite_border"
+                    />
+
+                <ImageView
+                    android:id="@+id/product_add"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/add_shopping_cart" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

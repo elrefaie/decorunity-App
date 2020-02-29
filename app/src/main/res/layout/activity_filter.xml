@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/Widget.MaterialComponents.Chip.Filter"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical"
+    tools:context=".ui.main.FilterActivity">
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontalScrollView">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/filter_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:singleLine="true"
+        app:singleSelection="true"
+        app:selectionRequired="true"
+        app:checkedChip="@+id/chip1"
+        >
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/bathroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Bathroom" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/bedroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Bedroom" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/childern_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Childern's room" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/dinning_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Dinning room" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/hallway"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Hallway" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/home_office"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Home office" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/kitchen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Kitchen" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/laundry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Laundry" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/out_door"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Out door" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/storage_room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Storage room" />
+    </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/designsRV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

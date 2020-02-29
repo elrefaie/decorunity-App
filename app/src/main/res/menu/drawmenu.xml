@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/room" android:title="  Rooms" android:textSize="15sp"
+
+    app:showAsAction="never">
+    <menu >
+      <item android:id="@+id/bedroom" android:title="  Bedroom" />
+      <item android:id="@+id/bathroom" android:title="  Bathroom"/>
+      <item android:id="@+id/livingroom" android:title="  Livingroom"/>
+      <item android:id="@+id/childrensroom" android:title="  Childrensroom"/>
+      <item android:id="@+id/Kitchen" android:title="  Kitchen"/>
+      <item android:id="@+id/homeo_ffice" android:title="  Home Office"/>
+    </menu>
+</item>
+    <item
+        android:id="@+id/product"
+        android:textSize="15sp"
+        android:title="  Products">
+        <menu>
+            <item
+                android:id="@+id/beds"
+                android:title="  Beds" />
+            <item
+                android:id="@+id/Capets"
+                android:title="  Carpets" />
+            <item
+                android:id="@+id/Decorative_Items"
+                android:title="  Decorative Items" />
+            <item
+                android:id="@+id/cupbord"
+                android:title="  Cupbords" />
+            <item
+                android:id="@+id/Chairs"
+                android:title="  Chairs" />
+            <item
+                android:id="@+id/Couch"
+                android:title="  Couchs" />
+        </menu>
+    </item>
+<item android:id="@+id/purchase" android:title="  Your purchase" />
+<item android:id="@+id/chat" android:title="  Chats" />
+<item android:id="@+id/noti" android:title="  Notification"  />
+<item android:id="@+id/offers" android:title="  Discounts and Offers" />
+</menu>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.SearchActivity"
+    android:orientation="vertical">
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/filter_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:singleLine="true"
+        app:singleSelection="true"
+
+        android:clickable="true"
+        android:focusable="true"
+        app:selectionRequired="true"
+        app:checkedChip="@+id/chipDesigns"
+
+        >
+
+
+        <com.google.android.material.chip.Chip
+        android:id="@+id/chipDesigns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:checked="true"
+        android:text="Designs" />
+        <com.google.android.material.chip.Chip
+        android:id="@+id/chipProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+        android:layout_marginLeft="5dp"
+        android:text="Products" />
+        <com.google.android.material.chip.Chip
+        android:id="@+id/chipPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+        android:layout_marginLeft="5dp"
+        android:text="People" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchRV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
