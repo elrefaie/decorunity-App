@@ -11,14 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.SearchActivity"
-           ></activity>
+        <activity android:name=".ui.itemDisplay.DisplayDesign"></activity>
+        <activity
+            android:name=".ui.main.SearchActivity"
+            android:parentActivityName=".ui.main.FirstActivity"></activity>
         <activity android:name=".ui.main.FirstActivity" />
         <activity android:name=".ui.main.FilterActivity" />
         <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.main.SplashActivity"
-            android:theme="@style/SplashTheme"
-          >
+        <activity
+            android:name=".ui.main.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

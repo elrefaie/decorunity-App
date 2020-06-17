@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.decorunity.R;
+import com.example.decorunity.data.RVClick;
 import com.example.decorunity.pojo.ProductModel;
 
 import java.util.ArrayList;
@@ -19,8 +20,16 @@ import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductViewHolder> implements Filterable {
     private List<ProductModel> productsList = new ArrayList<>();
-    private List<ProductModel> producrsListFull = new ArrayList<>();
+   private List<ProductModel> producrsListFull = new ArrayList<>();
+   private RVClick rvClick;
 
+    public ProductsAdapter(RVClick rvClick){
+        this.rvClick=rvClick;
+    }
+    public ProductsAdapter(List<ProductModel> productsList) {
+        this.productsList = productsList;
+        producrsListFull = new ArrayList<>(productsList);
+    }
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -40,9 +49,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         return productsList.size();
     }
 
-    public void setList(List<ProductModel> designsList) {
-        this.productsList = designsList;
-        producrsListFull = new ArrayList<>(designsList);
+    public void setList(List<ProductModel> productsList) {
+        this.productsList = productsList;
+       producrsListFull = new ArrayList<>(productsList);
         notifyDataSetChanged();
     }
 
@@ -57,6 +66,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             priceTV = itemView.findViewById(R.id.product_price);
             productImage = itemView.findViewById(R.id.product_img);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rvClick.onItemClick(getAdapterPosition());
+                }
+            });
         }
     }
 
@@ -70,20 +85,20 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         protected FilterResults performFiltering(CharSequence constraint) {
             List<ProductModel> filteredProduct=new ArrayList<>();
             if(constraint==null||constraint.length()==0)
-            {
-                filteredProduct.addAll(producrsListFull);
+            { filteredProduct.addAll(producrsListFull);
             }
             else {
 
-                String filtterPattern=constraint.toString().toLowerCase().trim();
+                String filterPattern=constraint.toString().toLowerCase().trim();
                 for (ProductModel item:producrsListFull){
-                    if(item.getProductName().toLowerCase().contains(filtterPattern)){
+                    //startsWith(filterPattern)
+                    //contains(filterPattern)
+                    if(item.getProductName().toLowerCase().contains(filterPattern)){
 
                         filteredProduct.add(item);
+                    }else if (item.getBrand().toLowerCase().startsWith(filterPattern)){
+                        filteredProduct.add(item);
                     }
-
-
-
                 }
             }
             FilterResults results=new FilterResults();

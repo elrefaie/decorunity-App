@@ -5,52 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.SearchActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/filter_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:singleLine="true"
-        app:singleSelection="true"
-
         android:clickable="true"
         android:focusable="true"
-        app:selectionRequired="true"
         app:checkedChip="@+id/chipDesigns"
-
-        >
-
+        app:selectionRequired="true"
+        app:singleLine="true"
+        app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
-        android:id="@+id/chipDesigns"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+            android:id="@+id/chipDesigns"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:checkable="true"
-            android:clickable="true"
-            android:focusable="true"
             android:checked="true"
-        android:text="Designs" />
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Designs" />
+
         <com.google.android.material.chip.Chip
-        android:id="@+id/chipProducts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:id="@+id/chipProducts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:checkable="true"
             android:clickable="true"
             android:focusable="true"
-        android:layout_marginLeft="5dp"
-        android:text="Products" />
+            android:text="Products"
+            style="@style/Widget.MaterialComponents.Chip.Choice"/>
+
         <com.google.android.material.chip.Chip
-        android:id="@+id/chipPeople"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+            android:id="@+id/chipPeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:checkable="true"
             android:clickable="true"
             android:focusable="true"
-        android:layout_marginLeft="5dp"
-        android:text="People" />
-    </com.google.android.material.chip.ChipGroup>
+            android:text="People"
+            style="@style/Widget.MaterialComponents.Chip.Choice"/>
+        </com.google.android.material.chip.ChipGroup>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRV"

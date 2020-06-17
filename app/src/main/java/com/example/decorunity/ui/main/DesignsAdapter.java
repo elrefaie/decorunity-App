@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.decorunity.R;
+import com.example.decorunity.data.RVClick;
 import com.example.decorunity.pojo.DesignModel;
 
 import java.util.ArrayList;
@@ -22,26 +23,32 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class DesignsAdapter extends RecyclerView.Adapter<DesignsAdapter.PostViewHolder> implements Filterable {
+
+public class DesignsAdapter extends RecyclerView.Adapter<DesignsAdapter.DesignViewHolder> implements Filterable {
     private List<DesignModel> designsList = new ArrayList<>();
-    private List<DesignModel> designsListFull = new ArrayList<>();
-   private Set<Integer> favorite_Set = new HashSet<Integer>();
+    private Set<Integer> favorite_Set = new HashSet<Integer>();
     private     Set<Integer> share_Set = new HashSet<Integer>();
+    List<DesignModel> designlistAll;
+    private RVClick rvClick;
 
-
+    public DesignsAdapter(RVClick rvClick){
+        this.rvClick=rvClick;
+    }
+    public DesignsAdapter(){
+        this.designsList=designsList;
+        designlistAll=new ArrayList<>(designsList);
+    }
     @NonNull
     @Override
-    public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DesignViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_designs, parent,false);
-        final PostViewHolder holder = new PostViewHolder(view);
+        final DesignViewHolder holder = new DesignViewHolder(view);
 
         holder.favorite_icon.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Log.e("position", "" +holder.getAdapterPosition()) ;
-
-
                 //   if(  holder.favorite_icon.getDrawable().getConstantState().equals (holder.getResources().getDrawable(R.drawable.favorite_border).getConstantState()))
 
                 if(v.getId()==R.id.favorite){
@@ -59,11 +66,11 @@ public class DesignsAdapter extends RecyclerView.Adapter<DesignsAdapter.PostView
             }
         });
         return holder;
-       // return new PostViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_designs, parent, false));
+        // return new PostViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_designs, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final PostViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final DesignViewHolder holder, final int position) {
         holder.descriptionTV.setText(designsList.get(position).getDesciption());
         holder.userTV.setText(designsList.get(position).getDesignerName());
         holder.priceTV.setText(designsList.get(position).getDesignPrice());
@@ -84,7 +91,7 @@ public class DesignsAdapter extends RecyclerView.Adapter<DesignsAdapter.PostView
             @Override
             public void onClick(View v) {
 
-                    Log.e("Elrefaie","TEST");
+                Log.e("Elrefaie","TEST");
 
             }
         });
@@ -97,17 +104,18 @@ public class DesignsAdapter extends RecyclerView.Adapter<DesignsAdapter.PostView
 
     public void setList(List<DesignModel> designsList) {
         this.designsList = designsList;
-        designsListFull=new ArrayList<>(designsList);
+        designlistAll=new ArrayList<>(designsList);
         notifyDataSetChanged();
     }
 
 
-
-    public class PostViewHolder extends RecyclerView.ViewHolder {
+    public class DesignViewHolder extends RecyclerView.ViewHolder {
         TextView descriptionTV, userTV, priceTV;
         ImageView imageView,favorite_icon,share;
         RecyclerView index;
-        public PostViewHolder(@NonNull View itemView) {
+
+
+        public DesignViewHolder(@NonNull View itemView) {
             super(itemView);
             descriptionTV = itemView.findViewById(R.id.desc);
             userTV = itemView.findViewById(R.id.username);
@@ -115,13 +123,48 @@ public class DesignsAdapter extends RecyclerView.Adapter<DesignsAdapter.PostView
             imageView=itemView.findViewById(R.id.img);
             favorite_icon=itemView.findViewById(R.id.favorite);
             share=itemView.findViewById(R.id.share);
-index=itemView.findViewById(R.id.searchRV);
+            index=itemView.findViewById(R.id.searchRV);
 
-        }
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    rvClick.onItemClick(getAdapterPosition());
+                }
+            });
 
-    }
+        }}
     @Override
     public Filter getFilter() {
-        return null;
+        return designsFilter;
     }
+    Filter designsFilter=new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<DesignModel> filteredDesigns=new ArrayList<>();
+
+
+            if (constraint.toString().isEmpty()){
+                filteredDesigns.addAll(designlistAll);
+            }else{
+                String filterPattern=constraint.toString().toLowerCase().trim();
+                for (DesignModel item:designlistAll){
+                    //startsWith(filterPattern)
+                    //contains(filterPattern)
+                    if(item.getDesignerName().toLowerCase().contains(filterPattern)){
+                        filteredDesigns.add(item);} } }
+
+
+
+            FilterResults results=new FilterResults();
+            results.values=filteredDesigns;
+            return results;
+        }
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            designsList.clear();
+
+            designsList.addAll((List)results.values);
+            notifyDataSetChanged();
+        }
+    };
 }

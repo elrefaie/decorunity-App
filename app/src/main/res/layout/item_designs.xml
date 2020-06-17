@@ -39,7 +39,8 @@
                     android:layout_marginLeft="3dp"
                     android:text="designer_name"
                     android:textStyle="bold"
-                    android:textSize="22sp" />
+                    android:textSize="22sp"
+                    android:textColor="@color/colorPrimaryDark"/>
 
             </LinearLayout>
 
